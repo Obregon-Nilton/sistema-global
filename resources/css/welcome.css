@@ -1,0 +1,57 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fondo y fuente */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+}
+
+/* Contenedor centrado */
+.container {
+    text-align: center;
+    background: rgba(0,0,0,0.5);
+    padding: 60px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Título */
+.container h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* Subtítulo */
+.container p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+/* Botón */
+.button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 15px 50px;
+    background-color: #11d462;
+    color: #fff;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #0aa14d;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}

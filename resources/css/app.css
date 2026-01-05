@@ -1,0 +1,379 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+/* resources/js/app.css */
+
+.layout{
+    display: flex;
+    min-height: calc(90vh - 120px);
+    text-align: center;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    background: #2d3748;
+    color: #fff;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+header h1{
+    font-size: 30px;
+}
+
+nav a {
+    color: #fff;
+    margin-left: 1rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #63b3ed;
+}
+
+aside{
+    background: #edf2f7;
+    width: 220px;
+    padding: 1rem;
+    flex-shrink: 0; /**/
+}
+
+footer{
+    background-color: #1f2937;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+.tipo{
+    font-size: 20px;
+    font-weight: 600;
+    margin-right:  100%;
+    white-space: nowrap;
+}
+
+main{
+    flex: 1;
+    padding: 2rem;
+}
+
+/* =========================
+   Tabla
+   ========================= */
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: #fff;
+}
+
+table th, table td{
+    padding: 0.2rem 1.5rem;
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+table th{
+    background: #edf2f7;
+}
+
+/* =========================
+   boton de tabla
+   ========================= */
+.btn, .editar, .eliminar{
+    width: 110px;
+    padding: 6px 3px;
+    border-radius: 6px;
+    color: rgb(254, 254, 254);
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+#btnAgregar, #btnGuardar, #btnAdministrar{
+    background-color: #1245ed;
+}
+
+#btnAgregar{
+    margin-right: 100%;
+}
+
+#btnCerrar, #btnEliminar, #btnCerrar {
+    background-color: #e4110a;
+}
+
+#btnEditar {
+    background-color: #07b9ea;
+}
+
+#btn-formulario{
+    text-align: center;
+}
+
+#btnAgregar {
+    margin-right: 0;
+}
+
+.acciones {
+    display: flex;
+    justify-content: space-between; /* Agregar a la izquierda / búsqueda a la derecha */
+    align-items: center;            /* misma altura */
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+
+/* =========================
+   Inputs y validación
+   ========================= */
+/* Input tamaño más pequeño para búsqueda */
+.buscador input {
+    width: 300px;
+}
+
+input{
+    padding: 0.5rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: #63b3ed;
+}
+
+tr:hover{
+    background-color: #ebedee;
+}
+
+/* =========================
+   Modal
+   ========================= */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999; /* Este número es CLAVE */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    min-width: 350px;
+    max-width: 400px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+#modalTitulo{
+    /* text-align: center; */
+    font-size: 20px;
+    font-weight: 600;
+
+}
+
+/* =========================
+   Select - Filtro de Edad
+   ========================= */
+.mostrarPorEdad select {
+    padding: 0.5rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 16px;
+    width: 100%;
+}
+.mostrarPorEdad{
+    margin-right: 58%;
+}
+.mostrarPorEdad select:focus {
+    border-color: #63b3ed;
+    outline: none;
+}
+
+/* =========================
+   Toast / Alert
+   ========================= */
+#toast {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    min-width: 250px;
+    padding: 1rem;
+    border-radius: 6px;
+    display: none; /* se muestra con JS */
+    z-index: 2000;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+#toast.show {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#toast.error {
+    background-color: #f56565;
+    color: #fff;
+}
+
+#toast.success {
+    background-color: #48bb78;
+    color: #fff;
+}
+/* =============================
+   Menú lateral
+============================= */
+
+/* Sidebar completo */
+aside {
+    width: 210px;
+    background-color: #1f2937; /* igual que header y footer */
+    height: 83vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Menú principal */
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    margin: 0;
+    padding: 0;
+}
+
+/* Botones del menú principal */
+.menu-btn {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    background-color: #111827; /* MÁS oscuro */
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 0;
+    font-size: 16px;
+    display: block;
+}
+
+.menu-btn:hover,
+.menu-btn:focus {
+    background-color: #1e293b; /* hover elegante */
+    outline: none;
+}
+
+/* Submenú */
+.submenu {
+    list-style: none;
+    padding-left: 1rem;
+    margin: 0;               /* sin espacios arriba/abajo */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background-color: #374151; /* oscuro pero distinto */
+    border-radius: 0;
+    text-align: left;
+}
+
+.submenu li a {
+    text-align: left;   /* ← asegura que cada item NO quede centrado */
+}
+
+.submenu.open {
+    max-height: 500px;
+}
+
+/* Items del submenú */
+.submenu li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #e5e7eb;
+    border-radius: 0;
+    transition: background 0.2s;
+}
+
+.submenu li a:hover {
+    background-color: #4b5563;
+}
+
+/* ==========================
+   PAGINACIÓN PROFESIONAL
+   ========================== */
+
+.paginacion {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 18px;
+    margin-bottom: 0;
+    user-select: none;
+}
+
+.paginacion button {
+    min-width: 36px;
+    height: 36px;
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.paginacion button:hover {
+    background-color: #f3f4f6;
+}
+
+.paginacion button.activo {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+    cursor: default;
+}
+
+.paginacion button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
