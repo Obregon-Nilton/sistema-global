@@ -86,8 +86,5 @@ final class NotaMusical extends Model
         /** SELECT * FROM notas_musicales WHERE tipo = 'natural'; */
         return $query->where('tipo', $tipo);
     }
-/**
- * ya acabamos pero faltaria Uso de la mayuscula al editar y agregar y tambien
- * mostrar los simbolos segun la nota
- */
+    
 }
