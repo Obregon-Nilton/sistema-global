@@ -1,6 +1,6 @@
 // resources/js/musica/musicos.js
 
-import axios from "axios";
+const axios = window.axios;
 import Utilidad from "../Utils/Utilidad";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
     const listarMusicos = async (pagina = 1) => {
         try {
-            let url = `/inicio/musicos/listar?page=${pagina}`;
-            if(terminoBusqueda) url = `/inicio/musicos/buscar/${terminoBusqueda}?page=${pagina}`;
+            let url = `/api/inicio/musicos/listar?page=${pagina}`;
+            if(terminoBusqueda) url = `/api/inicio/musicos/buscar/${terminoBusqueda}?page=${pagina}`;
 
             const respuesta = await axios.get(url);
             const paginador = respuesta.data;
@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const valor = selectEdad.value;
     terminoBusqueda = null;
 
-    let url = `/inicio/musicos/filtrarPorEdad?page=1`;
+    let url = `/api/inicio/musicos/filtrarPorEdad?page=1`;
     if(valor !== "") url += `&mostrarPorEdad=${valor}`;
 
     axios.get(url)
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
     const abrirModalEditar = (id) => {
         Utilidad.obtener({
-            url: `/inicio/musicos/ver/${id}`,
+            url: `/api/inicio/musicos/ver/${id}`,
             onSuccess: (musico) => {
                 editId = id;
                 modalTitulo.textContent = "MODIFICAR MÚSICO";
@@ -193,8 +193,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         Utilidad.guardar({
             url: editId === null
-                ? "/inicio/musicos/agregar"
-                : `/inicio/musicos/editar/${editId}`,
+                ? "/api/inicio/musicos/agregar"
+                : `/api/inicio/musicos/editar/${editId}`,
             datos: datos,
             isEdit: editId !== null,
             onSuccess: () => {
@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
     const eliminarMusico = (id) => {
         Utilidad.eliminar({
-            url: `/inicio/musicos/eliminar/${id}`,
+            url: `/api/inicio/musicos/eliminar/${id}`,
             successMsg: "Músico eliminado correctamente",
             onSuccess: () => listarMusicos(paginaActual)
         });

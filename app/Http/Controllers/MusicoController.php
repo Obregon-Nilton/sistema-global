@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PersonaRequest;
 use App\Http\Resources\MusicoResource;
-use App\Http\Resources\PersonaResource;
 use App\Services\MusicoService;
 use Illuminate\Http\Request;
 

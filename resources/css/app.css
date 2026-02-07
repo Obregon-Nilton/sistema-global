@@ -207,7 +207,7 @@ tr:hover{
 /* =========================
    Select - Filtro de Edad
    ========================= */
-.mostrarPorEdad select {
+.menu-select select {
     padding: 0.5rem;
     border: 2px solid #ccc;
     border-radius: 6px;
@@ -215,10 +215,10 @@ tr:hover{
     font-size: 16px;
     width: 100%;
 }
-.mostrarPorEdad{
+.menu-select{
     margin-right: 58%;
 }
-.mostrarPorEdad select:focus {
+.menu-select select:focus {
     border-color: #63b3ed;
     outline: none;
 }

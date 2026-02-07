@@ -25,7 +25,12 @@ class Artista extends Model
          return $this->belongsToMany(NotaMusical::class, 'interpretaciones', 'artista_id', 'nota_id');
     }
 
-    public function scopePorArtista(Builder $query, string $artista): Builder
+    /** Este metodo ira en interpretaciones, ademas las erntidades tendrab su propio
+     * logica yse agregaran o m odificaran por separado
+     * y en entidad interpretaciones se agregara un interpretacion con datos ya existentes
+     * al eñliminar eso no afecta a los demas entidades
+     */
+    public function scopeFiltrarPorArtista(Builder $query, string $artista): Builder
     {
         return $query->where('tipo', $artista);
     }

@@ -33,7 +33,7 @@ class NotaMusicalController extends Controller
         $nota = $this->service->agregarNotaMusical(
             $request->only(['nota', 'tipo']));
             //creamos una instancia, nose guarda en variable ya q no se vuelve a usar
-        return NotaMusicalResource::make($nota) //creamos instancia de resource, make = crear/construir un onjeto
+        return NotaMusicalResource::make($nota) //creamos instancia de resource, make = crear/construir un objeto
             ->additional(['success' => true])
             ->response()
             ->setStatusCode(201);//al q consume api le decimos q pasó, se agregó
@@ -54,8 +54,7 @@ class NotaMusicalController extends Controller
         $nota = $this->service->verNotaMusical($id);
         return NotaMusicalResource::make($nota)
             ->additional(['success' => true])
-            ->response()
-            ->setStatusCode(200);//termino con este
+            ->response();//termino con este
     }
 
     public function listarNotasMusicales(){

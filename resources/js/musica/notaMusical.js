@@ -1,4 +1,4 @@
-import axios from "axios";
+const axios = window.axios;
 import Utilidad from "../Utils/Utilidad";
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -70,11 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
     const listarNotasMusicales = async (pagina = 1) => {
         try {
-            let url = `/inicio/notasMusicales/listar?page=${pagina}`;
+            let url = `/api/inicio/notasMusicales/listar?page=${pagina}`;
 
             // Si hay búsqueda activa, usa endpoint buscar
             if (terminoBusqueda) {
-                url = `/inicio/notasMusicales/buscar/${terminoBusqueda}?page=${pagina}`;
+                url = `/api/inicio/notasMusicales/buscar/${terminoBusqueda}?page=${pagina}`;
             }
 
             const respuesta = await axios.get(url);
@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
     const abrirModalEditar = (id) => {
          Utilidad.obtener({
-             url: `/inicio/notasMusicales/ver/${id}`,
+             url: `/api/inicio/notasMusicales/ver/${id}`,
              onSuccess: (notaMusical) => {
                  editId = id;
                  modalTitulo.textContent = "MODIFICAR NOTA MUSICAL";
@@ -196,8 +196,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Llamamos a Utilidad.guardar pasando los datos y callbacks
     Utilidad.guardar({
         url: editId === null
-            ? "/inicio/notasMusicales/agregar"
-            : `/inicio/notasMusicales/editar/${editId}`,
+            ? "/api/inicio/notasMusicales/agregar"
+            : `/api/inicio/notasMusicales/editar/${editId}`,
         datos: datos,
         isEdit: editId !== null,
         onSuccess: () => {
@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================================== */
     const eliminarNotaMusical = async (id) => {
         Utilidad.eliminar({
-            url: `/inicio/notasMusicales/eliminar/${id}`,
+            url: `/api/inicio/notasMusicales/eliminar/${id}`,
             successMsg: "Nota musical eliminada correctamente",
             onSuccess: () => listarNotasMusicales(paginaActual) // aca le estamos diciendo ejecuts esta funcion
         });

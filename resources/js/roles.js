@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const respuesta = await axios.get(`/inicio/roles/buscar/${dato}`);
+            const respuesta = await axios.get(`/api/inicio/roles/buscar/${dato}`);
             pintarTabla(respuesta.data.data);
         } catch (error) {
             console.error(error);
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =============================
     const abrirModalEditar = async (id) => {
      Utilidad.obtener({
-           url: `/inicio/roles/ver/${id}`,
+           url: `/api/inicio/roles/ver/${id}`,
          onSuccess: (rol) => {
               editId = id;
              modalTitulo.textContent = "MODIFICAR ROL";
@@ -110,8 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const datos = {nombre: inputNombre.value.trim()}
         Utilidad.guardar({
             url: editId === null
-            ? '/inicio/roles/agregar'
-            : `/inicio/roles/editar/${editId}`,
+            ? '/api/inicio/roles/agregar'
+            : `/api/inicio/roles/editar/${editId}`,
             datos: datos,
             isEdit: editId !== null,
             onSuccess: () => {
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ===================================================== */
     const eliminaRol = async (id) => {
         Utilidad.eliminar({
-            url: `/inicio/roles/eliminar/${id}`,
+            url: `/api/inicio/roles/eliminar/${id}`,
             successMsg: "Rol eliminada correctamente",
             onSuccess: () => listarRoles()
         });
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =============================
     const listarRoles = async () => {
         try {
-            const respuesta = await axios.get('/inicio/roles/listar');
+            const respuesta = await axios.get('/api/inicio/roles/listar');
             pintarTabla(respuesta.data.data);
         } catch (error) {
             mensajeDinamic("Ocurrió un error al cargar Roles", "error");

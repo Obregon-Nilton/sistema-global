@@ -30,7 +30,7 @@ class NotaMusicalResource extends JsonResource //tiene metodos statics
             'id' => $this->id_nota,
             'nota' => $this->nota,
             'tipo' => $this->tipo,
-            'nota_formateada' => $this->nota_formateada, /**Agregamos Exk el Resource decide QUÉ ve el frontend */
+            'nota_formateada' => $this->nota_formateada, /**Agregamos xk el Resource decide QUÉ ve el frontend */
         ];
     }
 }

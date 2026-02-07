@@ -11,7 +11,7 @@
 <div class="acciones">
     <button id="btnAgregar" class="btn">✚ Agregar</button>
 
-    <div class="mostrarPorEdad">
+    <div class="menu-select">
         <select name="mostrarPorEdad" id="mostrarPorEdad">
             <option value="">🌐 Todos</option>
             <option value="0">🧒 Menores</option>

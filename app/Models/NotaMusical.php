@@ -51,7 +51,7 @@ final class NotaMusical extends Model
          self::TIPO_BEMOL
     ];
 
-    /** Ese constante TIPOS le metemols dentro de una funcion statica publica
+    /** Ese constante TIPOS le metemos dentro de una funcion statica publica
      * para usar desde afuera sin romper las relgas, retornara un array
      * ['natural', 'sostenido', 'bemol'], se ujsara si queremos lista completa
      */
@@ -86,5 +86,5 @@ final class NotaMusical extends Model
         /** SELECT * FROM notas_musicales WHERE tipo = 'natural'; */
         return $query->where('tipo', $tipo);
     }
-    
+
 }

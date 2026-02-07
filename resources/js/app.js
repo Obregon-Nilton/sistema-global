@@ -3,8 +3,11 @@
 import './bootstrap';
 import './sidebar';
 import './roles';
-import './musica/musicos'
-import './musica/notaMusical'
+import './musica/musicos';
+import './musica/notaMusical';
+import './usuario/usuarios';
+import './musica/artista';
+import './musica/instrumento';
 import axios from 'axios';
 
 window.axios = axios;

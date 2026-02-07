@@ -13,7 +13,9 @@
         <button class="menu-btn">🎵 Sistema Musical</button>
         <ul class="submenu">
             <li><a href="{{ route('musicos.index') }}">• Musicos</a></li>
-            <li><a href="{{ route('notasMusicales.index') }}">• Nota Musical</a></li>
+            <li><a href="{{ route('notasMusicales.index') }}">• Notas Musicales</a></li>
+            <li><a href="{{ route('artistas.index') }}">• Artistas</a></li>
+            <li><a href="{{ route('instrumentos.index') }}">• Instrumentos</a></li>
         </ul>
     </li>
 

@@ -2,44 +2,65 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArtistaRequest;
+use App\Http\Resources\ArtistaResource;
 use App\Services\ArtistaService;
-use Illuminate\Http\Request;
-
 class ArtistaController extends Controller
 {
-    protected $service;
+    protected ArtistaService $service;
 
-    public function __construct(ArtistaService $service){
+    public function __construct(ArtistaService $service)
+    {
         $this->service = $service;
     }
 
     public function index(){
-        return view('pages.musica.artista');
+        return view('pages.musica.artistas');
     }
 
-    public function agregarArtista(Request $request){
-        $artista = $this->service->agregarArtist($request->only(['nombre', 'nacionalidad']));
-        return response()->json(['success' => true, 'data' => $artista]);
+    public function agregarArtista(ArtistaRequest $request)
+    {
+        $data = $this->service->agregarArtist(
+            $request->only(['nombre', 'nacionalidad']));
+        return ArtistaResource::make($data)
+            ->additional(['success' => true])
+            ->response()
+            ->setStatusCode(201);
     }
 
-    public function editarArtista($idArtista, Request $request){
-        $artista = $this->service->editarArtist($idArtista, $request->only(['nombre', 'nacionalidad']));
-        return response()->json(['success' => true, 'data' => $artista]);
+    public function editarArtista($id, ArtistaRequest $request)
+    {
+        $data = $this->service->editarArtist($id, $request
+            ->only(['nombre', 'nacionalidad']));
+        return ArtistaResource::make($data)
+            ->additional(['success' => true])
+            ->response()
+            ->setStatusCode(200);
     }
 
-    public function verArtista($idArtista){
-        $artista = $this->service->verArtist($idArtista);
-        return response()->json(['success' => true, 'data' => $artista]);
-    }
-
-    public function eliminarAtista($idArtista){
-        $this->service->eliminarArtist($idArtista);
-        return response()->json(['success' => true]);
+    public function verArtista($id){
+        $artista = $this->service->verArtist($id);
+        return ArtistaResource::make($artista)
+            ->additional(['success', true])
+            ->response();
     }
 
     public function listarArtistas(){
         $artistas = $this->service->listarArtists();
-        return response()->json(['success' => true, 'data' => $artistas]);
+        return ArtistaResource::collection($artistas)
+            ->additional(['success' => true])
+            ->response();
     }
 
+    public function buscarArtista($dato){
+        $data = $this->service->buscarArtista($dato);
+        return ArtistaResource::collection($data)
+           ->additional(['success' => true])
+           ->response();
+    }
+
+    public function eliminarArtista($id){
+        $this->service->eliminarArtist($id);
+        return response()->json(['success' => true]);
+    }
 }
